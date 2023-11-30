@@ -34,12 +34,12 @@ export const updateTodo: RequestHandler = (req, res, next) => {
             TODOS.map(t => {
                 if (t.id === todoId) {
                     t.text = text;
+                    return res.status(200).json({
+                        status: 'success',
+                        message: 'updated text successfully',
+                        data: { updatedTodo: t, todos: TODOS}
+                    });
                 }
-                return res.status(200).json({
-                    status: 'success',
-                    message: 'updated text successfully',
-                    data: { updatedTodo: t}
-                })
             })
         }
     });
